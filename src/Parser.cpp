@@ -4,7 +4,7 @@
 
 Parser::Parser(std::vector<char> charsequence,  std::string input)
 {
-    this->chars = charsequence;
+    this->chars = charsequenc;
     this->sequence = input;
 }
 
