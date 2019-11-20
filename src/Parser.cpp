@@ -2,9 +2,9 @@
 #include <utility>
 #include <vector>
 
-Parser::Parser(std::vector<char> charsequence,  std::string input)
+Parser::Parser(std::vector<char> charseq,  std::string input)
 {
-    this->chars = charsequenc;
+    this->chars = charseq;
     this->sequence = input;
 }
 
@@ -29,5 +29,22 @@ std::map<char, int> Parser::parse()
         ret.insert(std::make_pair(i, count));
     }
     return ret;
+}
+
+// These methods allow changing the ruleset on the fly
+void Parser::setChars(std::vector<char> charseq)
+{
+    this->chars = charseq;
+}
+
+void Parser::setSequence(std::string seq)
+{
+    this->sequence = seq;
+}
+
+
+void Parser::appendSequence(std::string seq)
+{
+    this->sequence += seq;
 }
 

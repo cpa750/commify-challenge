@@ -14,10 +14,15 @@ private:
     std::string sequence;
 
 public:
-    Parser(std::vector<char> charsequence,  std::string input);
+    Parser(std::vector<char> charseq,  std::string input);
     ~Parser() = default;
 
-    std::map<char, int> parse(); // TODO: write tests for this
+    std::map<char, int> parse();
+    
+    // These methods allow changing the ruleset on the fly
+    void setChars(std::vector<char> charseq);
+    void setSequence(std::string seq);
+    void appendSequence(std::string seq);
 };
 
 #endif

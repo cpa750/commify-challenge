@@ -52,3 +52,16 @@ BOOST_AUTO_TEST_CASE(NoStringParse)
     BOOST_CHECK_THROW(p.parse(), StringEmpty);
 }
 
+BOOST_AUTO_TEST_CASE(TestSetters)
+{
+    Parser p({}, "");
+    p.setChars({'A', 'B'});
+    p.setSequence("ABABAB");
+    p.appendSequence("AB");    
+
+    std::map<char, int> b = p.parse();
+
+    BOOST_CHECK_EQUAL(b['A'], 4);
+    BOOST_CHECK_EQUAL(b['B'], 4);
+}
+
