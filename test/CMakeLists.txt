@@ -5,8 +5,15 @@ include_directories (${Boost_INCLUDE_DIRS})
 
 include_directories(../include ../src)
 add_executable (Tests
+                MainTestModule.cpp
+                CalculatorTest.cpp
                 ParserTest.cpp
+                RulesetTest.cpp
+                ../src/Calculator.cpp
+                ../include/Calculator.h
                 ../src/Parser.cpp
-                ../include/Parser.h) 
+                ../include/Parser.h
+                ../src/Ruleset.cpp
+                ../include/Ruleset.h) 
 
 target_link_libraries (Tests ${Boost_LIBRARIES})
