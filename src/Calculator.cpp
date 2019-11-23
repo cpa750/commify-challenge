@@ -12,6 +12,11 @@ Calculator::Calculator(Ruleset rs) // Must construct the base class first
 
 void Calculator::addItems(std::string itemSequence)
 {
+    for (auto i: itemSequence)
+    {
+        if (!this->ruleset.contains(i))
+                throw std::out_of_range("Character or sequence not in ruleset");
+    }
     this->parser.appendSequence(itemSequence);
 }
 
@@ -27,9 +32,16 @@ void Calculator::applySpecials()
         if (specials.size() < 1) return; // Don't try to apply specials that don't exist
         else if (specials.size() == 1)
         {
-            int totalDiff = this->total - 
-            (this->parseResults.at(i) / specials[0][0]) * specials[0][1];
-            this->total -= totalDiff;
+            int itemsOriginalPrice =
+                    this->ruleset.getUnitPrice(i) * this->parseResults.at(i);
+            // Need to know item original price
+            int specialPrice =
+            (this->parseResults.at(i) / specials[0][0]) * specials[0][1] +
+            (this->parseResults.at(i) % specials[0][0]) * this->ruleset.getUnitPrice(i);
+            // Getting the special amount, plus the price of any items 'left over'
+
+            int itemsDiff = itemsOriginalPrice - specialPrice;
+            this->total -= itemsDiff;
         }
         else
         {
@@ -57,10 +69,13 @@ int Calculator::getBestSpecial(char item, std::vector<std::vector<int>> specials
     int lowestTotal = this->total;
     for (auto i: specials)
     {
-        int itemsOriginalPrice = this->ruleset.getUnitPrice(item) * this->parseResults.at(item);
+        int itemsOriginalPrice = 
+            this->ruleset.getUnitPrice(item) * this->parseResults.at(item);
+        // Getting the original price of the items to compare
         int specialPrice =
             (this->parseResults.at(item) / i[0]) * i[1] +
             (this->parseResults.at(item) % i[0]) * this->ruleset.getUnitPrice(item);
+        // Getting the special amount, plus the price of any items 'left over'
 
         int itemsDiff = itemsOriginalPrice - specialPrice;
         int totalAfterSpecial = this->total - itemsDiff;

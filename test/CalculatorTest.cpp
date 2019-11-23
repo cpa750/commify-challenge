@@ -1,4 +1,3 @@
-#include <iostream>
 #define BOOST_TEST_DYN_LINK
 #ifdef STAND_ALONE
 #define BOOST_TEST_MODULE Main
@@ -10,10 +9,10 @@
 
 BOOST_AUTO_TEST_SUITE(CalculatorTest)
 
-    BOOST_AUTO_TEST_CASE(ApplyWithNoSpecials)
+    /*BOOST_AUTO_TEST_CASE(ApplyWithNoSpecials)
     {
         Ruleset rs;
-        rs.addItem('A', 50, {});
+        rs.addItem('A', 50);
         Calculator c(rs);
         c.addItems("AAA");
         BOOST_CHECK_EQUAL(c.calculateTotal(), 150); 
@@ -40,6 +39,14 @@ BOOST_AUTO_TEST_SUITE(CalculatorTest)
         int total = c.calculateTotal();
         BOOST_CHECK_EQUAL(total, 390);
         // 390 is the lowest total for this ruleset
+    }*/
+    BOOST_AUTO_TEST_CASE(TestCase1)
+    {
+        Ruleset rs;
+        rs.addItem('A', 60, {{3, 150}});
+        Calculator c(rs);
+        c.addItems("A");
+        BOOST_CHECK_EQUAL(c.calculateTotal(), 60);
     }
 BOOST_AUTO_TEST_SUITE_END()
 

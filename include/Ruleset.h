@@ -17,14 +17,14 @@ class Ruleset
 {
 private:
     std::map<char, Rule> rules;
-    bool contains(char character);
 
 public:
     void addItem(char item, int unitPrice,
-         std::vector<std::vector<int>> specials);
+         std::vector<std::vector<int>> specials={});
     void addSpecial(char item,
          std::vector<int> special);
     void clearSpecials(char item);
+    bool contains(char character);
     std::vector<char> getItems();
     int getUnitPrice(char item);
     std::vector<std::vector<int>> getSpecials(char item);
