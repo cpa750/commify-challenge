@@ -31,7 +31,6 @@ std::map<char, int> Parser::parse()
     return ret;
 }
 
-// These methods allow changing the ruleset on the fly
 void Parser::setChars(std::vector<char> charseq)
 {
     this->chars = charseq;

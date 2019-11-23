@@ -2,15 +2,21 @@
 #define CALCULATOR_H
 
 #include "../include/Parser.h"
+#include "../include/Ruleset.h"
 
 class Calculator : Parser
 {
 private:
     int total;
-    // TODO: need a ruleset class
+    Ruleset ruleset;
+    std::map<char, int> parseResults;
 
-public:
-    // TODO
+    public:
+    Calculator(Ruleset ruleset);
+
+    void applySpecials();
+    int getTotal();
+
 };
 
 #endif

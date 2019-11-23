@@ -20,5 +20,12 @@ class StringEmpty : public std::exception
     }
 };
 
+class KeyExists : public std::exception
+{
+    const char * what () const throw ()
+    {
+        return "Error: Key already exists in map";
+    }
+};
 
 #endif //EXCEPTIONS_H

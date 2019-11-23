@@ -9,20 +9,20 @@
 
 class Parser
 {
-private:
+    private:
     std::vector<char> chars;
     std::string sequence;
 
 public:
     Parser(std::vector<char> charseq,  std::string input);
-    ~Parser() = default;
 
     std::map<char, int> parse();
     
-    // These methods allow changing the ruleset on the fly
     void setChars(std::vector<char> charseq);
     void setSequence(std::string seq);
     void appendSequence(std::string seq);
+
+    std::vector<char> getChars() { return this->chars; }
 };
 
 #endif

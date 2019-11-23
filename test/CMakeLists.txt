@@ -1,3 +1,4 @@
+project(CheckoutTest)
 cmake_minimum_required(VERSION 3.14.7) # Second most recent Cmake version for compatibility
 set (Boost_USE_STATIC_LIBS OFF)
 find_package (Boost REQUIRED COMPONENTS unit_test_framework)
