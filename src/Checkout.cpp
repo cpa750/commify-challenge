@@ -26,7 +26,7 @@ void Checkout::scan(char item)
     {
         std::cout << "Error: Item does not exist." << std::endl;
     }
-
+    
     if (this->continuousCalculation)
         this->total = this->calculateTotal();
     // If continuous calculation is true, recalculate
