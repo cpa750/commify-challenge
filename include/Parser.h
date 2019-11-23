@@ -14,7 +14,7 @@ class Parser
     std::string sequence;
 
 public:
-    Parser(std::vector<char> charseq,  std::string input);
+    Parser(std::vector<char> charseq={},  std::string input="");
 
     std::map<char, int> parse();
     

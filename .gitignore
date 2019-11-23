@@ -1,5 +1,6 @@
 # Directories
 cmake-*/
+.idea/
 
 # File (types)
 *.sh

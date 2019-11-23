@@ -67,7 +67,7 @@ int Ruleset::getUnitPrice(char item)
 }
 
 std::vector<std::vector<int>> Ruleset::getSpecials(char item)
-// Method for getting the specials for an intem in the ruleset.
+// Method for getting the specials for an item in the ruleset.
 // Takes the item to get the specials for.
 // Returns a 2D vector of the specials.
 {

@@ -4,18 +4,24 @@
 #include "../include/Parser.h"
 #include "../include/Ruleset.h"
 
-class Calculator : Parser
+class Calculator
 {
 private:
     int total;
+    Parser parser;
     Ruleset ruleset;
     std::map<char, int> parseResults;
-
-    public:
-    Calculator(Ruleset ruleset);
-
+    
     void applySpecials();
-    int getTotal();
+    void calculateSubtotal();
+    int getBestSpecial(char item,
+            std::vector<std::vector<int>> specials);
+
+public:
+    Calculator(Ruleset rs);
+
+    void addItems(std::string itemSequence);
+    int calculateTotal();
 
 };
 
