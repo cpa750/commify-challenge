@@ -3,11 +3,12 @@
 
 #include "../include/Calculator.h"
 
-class Checkout: Calculator
+class Checkout 
 {
 private:
-    int total;
+    Calculator* calculator;
     bool continuousCalculation;
+    int total;
 
 public:
     Checkout(Ruleset rs, bool continuousCalculation=false);
