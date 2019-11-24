@@ -9,14 +9,11 @@ add_executable (Tests
                 MainTestModule.cpp
                 CalculatorTest.cpp
                 CheckoutTest.cpp
-                ParserTest.cpp
                 RulesetTest.cpp
                 ../src/Calculator.cpp
                 ../include/Calculator.h
                 ../src/Checkout.cpp
                 ../include/Checkout.h
-                ../src/Parser.cpp
-                ../include/Parser.h
                 ../src/Ruleset.cpp
                 ../include/Ruleset.h) 
 

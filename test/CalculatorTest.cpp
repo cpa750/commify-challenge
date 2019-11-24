@@ -10,6 +10,52 @@
 
 BOOST_AUTO_TEST_SUITE(CalculatorTest)
 
+    BOOST_AUTO_TEST_CASE(OneCharParse)
+
+    {
+        std::string seq = "A";
+        Ruleset rs;
+        rs.addItem('A', 50);
+        Calculator c(rs, seq);
+        std::map<char, int> b = c.parse();
+
+        BOOST_CHECK_EQUAL(b['A'], 1);
+    }
+
+    BOOST_AUTO_TEST_CASE(MultiCharParse)
+    {
+        std::string seq = "ABABABABABAB";
+        Ruleset rs;
+        rs.addItem('A', 50);
+        rs.addItem('B', 20);
+        Calculator c(rs, seq);
+        std::map<char, int> b = c.parse();
+
+        BOOST_CHECK_EQUAL(b['A'], 6);
+        BOOST_CHECK_EQUAL(b['B'], 6);
+    }
+
+    BOOST_AUTO_TEST_CASE(NoCharsParse)
+    { 
+        std::vector<char> chars; std::string seq = "ABABABABABAB"; 
+        Ruleset rs;
+        Calculator c(rs, seq);
+
+        BOOST_CHECK_THROW(c.parse(), CharListEmpty);
+
+    }
+
+    BOOST_AUTO_TEST_CASE(NoStringParse)
+    {
+        std::string seq;
+        Ruleset rs;
+        rs.addItem('A', 50);
+        rs.addItem('B', 20);
+        Calculator c(rs, seq);
+
+        BOOST_CHECK_THROW(c.parse(), StringEmpty);
+    }
+
     BOOST_AUTO_TEST_CASE(ApplyWithNoSpecials)
     {
         Ruleset rs;

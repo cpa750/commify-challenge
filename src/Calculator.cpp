@@ -1,13 +1,11 @@
 #include "../include/Calculator.h"
 #include <vector>
 
-Calculator::Calculator(Ruleset rs) // Must construct the base class first
+Calculator::Calculator(Ruleset rs, std::string seq)
 {
     this->ruleset = rs;
-    std::vector<char> items = rs.getItems();
-    this->parser.setChars(items);
-    // Now that the ruleset is in scope,
-    // set the characters for the parser
+    this->items = rs.getItems();
+    this->sequence = seq;
 }
 
 void Calculator::addItems(std::string itemSequence)
@@ -17,7 +15,7 @@ void Calculator::addItems(std::string itemSequence)
         if (!this->ruleset.contains(i))
                 throw std::out_of_range("Character or sequence not in ruleset");
     }
-    this->parser.appendSequence(itemSequence);
+    this->sequence += itemSequence;
 }
 
 void Calculator::applySpecials()
@@ -26,7 +24,7 @@ void Calculator::applySpecials()
     // if it exists, gets the difference between
     // the subtotal and the total with the special applied,
     // and subtracts that difference from the subtotal
-    for (auto i : parser.getChars())
+    for (auto i : this->getItems())
     {
         std::vector<std::vector<int>> specials = this->ruleset.getSpecials(i);
         if (specials.size() < 1) return; // Don't try to apply specials that don't exist
@@ -56,7 +54,7 @@ void Calculator::applySpecials()
 void Calculator::calculateSubtotal()
 {
     this->total = 0;
-    for (auto i: parser.getChars())
+    for (auto i: this->getItems())
     {
         this->total += this->parseResults.at(i) * this->ruleset.getUnitPrice(i);
     }
@@ -71,11 +69,9 @@ int Calculator::getBestSpecial(char item, std::vector<std::vector<int>> specials
     {
         int itemsOriginalPrice = 
             this->ruleset.getUnitPrice(item) * this->parseResults.at(item);
-        // Getting the original price of the items to compare
         int specialPrice =
             (this->parseResults.at(item) / i[0]) * i[1] +
             (this->parseResults.at(item) % i[0]) * this->ruleset.getUnitPrice(item);
-        // Getting the special amount, plus the price of any items 'left over'
 
         int itemsDiff = itemsOriginalPrice - specialPrice;
         int totalAfterSpecial = this->total - itemsDiff;
@@ -89,9 +85,33 @@ int Calculator::getBestSpecial(char item, std::vector<std::vector<int>> specials
     return lowestTotal;
 }
 
+std::map<char, int> Calculator::parse()
+{
+    if (this->items.empty())
+        throw CharListEmpty();
+    else if (this->sequence.empty())
+        throw StringEmpty();
+    // Must check to make sure both the char list
+    // and the string sequence are not empty
+
+    std::map<char, int> ret;
+    for (auto i : this->items)
+    {
+        int count = 0;
+        for (auto j : this->sequence)
+        {
+            if (j == i)
+                ++count;
+        }
+        ret.insert(std::make_pair(i, count));
+    }
+    return ret;
+}
+
+
 int Calculator::calculateTotal()
 {
-    this->parseResults = parser.parse();
+    this->parseResults = this->parse();
     this->calculateSubtotal();
     this->applySpecials();
     return this->total;

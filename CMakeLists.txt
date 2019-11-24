@@ -8,8 +8,6 @@ add_executable (Checkout
                 include/Calculator.h
                 src/Checkout.cpp
                 include/Checkout.h
-                src/Parser.cpp
-                include/Parser.h
                 src/Ruleset.cpp
                 include/Ruleset.h) 
 
