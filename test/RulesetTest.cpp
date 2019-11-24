@@ -10,7 +10,7 @@
 
 BOOST_AUTO_TEST_SUITE(RulesetTest)
 
-    BOOST_AUTO_TEST_CASE(AddGetSpecials)
+    BOOST_AUTO_TEST_CASE(AddAndGetSpecials)
     {
         Rule r;
         r.unitPrice = 30;
@@ -99,7 +99,7 @@ BOOST_AUTO_TEST_SUITE(RulesetTest)
         rs.addItem('A', 50, {{5, 200}});
         BOOST_CHECK_THROW(rs.clearSpecials('B'), std::out_of_range);
         // Checking that vector::at throws out_of_bounds properly
-        // This checks this functionality for these functions:
+        // This checks this functionality for these methods:
         // addSpecial, clearSpecials, getUnitPrice, getSpecials, setUnitPrice 
     }
 BOOST_AUTO_TEST_SUITE_END()

@@ -10,7 +10,7 @@
 BOOST_AUTO_TEST_SUITE(CheckoutTest)
 
 
-    BOOST_AUTO_TEST_CASE(TestCase1)
+    BOOST_AUTO_TEST_CASE(ScanOne)
     {
         Ruleset rs;
         rs.addItem('A', 60, {{3, 150}});
@@ -21,7 +21,7 @@ BOOST_AUTO_TEST_SUITE(CheckoutTest)
         c.scan('A');
         BOOST_CHECK_EQUAL(c.getTotal(), 60);
     }
-    BOOST_AUTO_TEST_CASE(TestCase2)
+    BOOST_AUTO_TEST_CASE(ScanTwoDifferent)
     {
         Ruleset rs;
         rs.addItem('A', 60, {{3, 150}});
@@ -33,7 +33,7 @@ BOOST_AUTO_TEST_SUITE(CheckoutTest)
         c.scan('B');
         BOOST_CHECK_EQUAL(c.getTotal(), 90);
     }
-    BOOST_AUTO_TEST_CASE(TestCase3)
+    BOOST_AUTO_TEST_CASE(ScanFourDifferent)
     {
         Ruleset rs;
         rs.addItem('A', 60, {{3, 150}});
@@ -47,7 +47,7 @@ BOOST_AUTO_TEST_SUITE(CheckoutTest)
         c.scan('A');
         BOOST_CHECK_EQUAL(c.getTotal(), 145);
     }
-    BOOST_AUTO_TEST_CASE(TestCase4)
+    BOOST_AUTO_TEST_CASE(ScanTwoSame)
     {
         Ruleset rs;
         rs.addItem('A', 60, {{3, 150}});
@@ -59,7 +59,7 @@ BOOST_AUTO_TEST_SUITE(CheckoutTest)
         c.scan('A');
         BOOST_CHECK_EQUAL(c.getTotal(), 120);
     }
-    BOOST_AUTO_TEST_CASE(TestCase5)
+    BOOST_AUTO_TEST_CASE(ScanThreeSame)
     {
         Ruleset rs;
         rs.addItem('A', 60, {{3, 150}});
@@ -72,7 +72,7 @@ BOOST_AUTO_TEST_SUITE(CheckoutTest)
         c.scan('A');
         BOOST_CHECK_EQUAL(c.getTotal(), 150);
     }
-    BOOST_AUTO_TEST_CASE(TestCase6)
+    BOOST_AUTO_TEST_CASE(ScanFourSame)
     {
         Ruleset rs;
         rs.addItem('A', 60, {{3, 150}});
@@ -86,7 +86,7 @@ BOOST_AUTO_TEST_SUITE(CheckoutTest)
         c.scan('A');
         BOOST_CHECK_EQUAL(c.getTotal(), 210);
     }
-    BOOST_AUTO_TEST_CASE(TestCase7)
+    BOOST_AUTO_TEST_CASE(ScanFiveSame)
     {
         Ruleset rs;
         rs.addItem('A', 60, {{3, 150}});
@@ -101,7 +101,7 @@ BOOST_AUTO_TEST_SUITE(CheckoutTest)
         c.scan('A');
         BOOST_CHECK_EQUAL(c.getTotal(), 270);
     }
-    BOOST_AUTO_TEST_CASE(TestCase8)
+    BOOST_AUTO_TEST_CASE(ScanSixSame)
     {
         Ruleset rs;
         rs.addItem('A', 60, {{3, 150}});
@@ -117,7 +117,7 @@ BOOST_AUTO_TEST_SUITE(CheckoutTest)
         c.scan('A');
         BOOST_CHECK_EQUAL(c.getTotal(), 300);
     }
-    BOOST_AUTO_TEST_CASE(TestCase9)
+    BOOST_AUTO_TEST_CASE(ScanSequenceAAAB)
     {
         Ruleset rs;
         rs.addItem('A', 60, {{3, 150}});
@@ -131,7 +131,7 @@ BOOST_AUTO_TEST_SUITE(CheckoutTest)
         c.scan('B');
         BOOST_CHECK_EQUAL(c.getTotal(), 180);
     }
-    BOOST_AUTO_TEST_CASE(TestCase10)
+    BOOST_AUTO_TEST_CASE(ScanSequenceAAABB)
     {
         Ruleset rs;
         rs.addItem('A', 60, {{3, 150}});
@@ -146,7 +146,7 @@ BOOST_AUTO_TEST_SUITE(CheckoutTest)
         c.scan('B');
         BOOST_CHECK_EQUAL(c.getTotal(), 195);
     }
-    BOOST_AUTO_TEST_CASE(TestCase11)
+    BOOST_AUTO_TEST_CASE(ScanSequenceAAABBD)
     {
         Ruleset rs;
         rs.addItem('A', 60, {{3, 150}});
@@ -162,7 +162,7 @@ BOOST_AUTO_TEST_SUITE(CheckoutTest)
         c.scan('D');
         BOOST_CHECK_EQUAL(c.getTotal(), 220);
     }
-    BOOST_AUTO_TEST_CASE(TestCase12)
+    BOOST_AUTO_TEST_CASE(ScanSequenceDABABA)
     {
         Ruleset rs;
         rs.addItem('A', 60, {{3, 150}});
