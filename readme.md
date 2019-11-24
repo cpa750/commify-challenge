@@ -1,5 +1,5 @@
 # Commify Code Challenge
-This is my solution to the Commify Code Challenge. It is imlemented in C++ using object oriented principles.
+This is my solution to the Commify Code Challenge. It is implemented in C++ using object oriented principles.
 ## Building this project
 ### Prerequisites
 * [GCC/G++](https://gcc.gnu.org/)
