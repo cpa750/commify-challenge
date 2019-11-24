@@ -18,6 +18,8 @@ int main()
     
     int total = checkout.getTotal();
     std::cout << "Total: " << total << std::endl;
+    // For the rest of the test cases, see test/CheckoutTest.cpp
+    // To verify they pass, use `sh run-tests.sh`
 
     return 0;
 }

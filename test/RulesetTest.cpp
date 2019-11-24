@@ -10,7 +10,7 @@
 
 BOOST_AUTO_TEST_SUITE(RulesetTest)
 
-    BOOST_AUTO_TEST_CASE(AddGetSpecialsTest)
+    BOOST_AUTO_TEST_CASE(AddGetSpecials)
     {
         Rule r;
         r.unitPrice = 30;
@@ -23,13 +23,13 @@ BOOST_AUTO_TEST_SUITE(RulesetTest)
         BOOST_CHECK_EQUAL(s.at(1), 150);
         BOOST_CHECK_EQUAL(rs.getUnitPrice('A'), 30);
     }
-    BOOST_AUTO_TEST_CASE(AddExceptionTest)
+    BOOST_AUTO_TEST_CASE(AddException)
     {
         Ruleset rs;
         rs.addItem('A', 50, {{5, 200}});
         BOOST_CHECK_THROW(rs.addItem('A', 40, {{3, 100}}), KeyExists); 
     }
-    BOOST_AUTO_TEST_CASE(GetItemsTest)
+    BOOST_AUTO_TEST_CASE(GetItems)
     {
         Ruleset rs;
         rs.addItem('A', 50, {{5, 200}});
@@ -39,7 +39,7 @@ BOOST_AUTO_TEST_SUITE(RulesetTest)
         BOOST_CHECK_EQUAL(items.at(0), 'A');
         BOOST_CHECK_EQUAL(items.at(1), 'B');
     }
-    BOOST_AUTO_TEST_CASE(AddSpecialTest)
+    BOOST_AUTO_TEST_CASE(AddSpecial)
     {
         Ruleset rs;
         rs.addItem('A', 50, {{5, 200}});
@@ -51,7 +51,7 @@ BOOST_AUTO_TEST_SUITE(RulesetTest)
         BOOST_CHECK_EQUAL(specialNo, 4);
         BOOST_CHECK_EQUAL(specialPrice, 180);
     }
-    BOOST_AUTO_TEST_CASE(ClearSpecialTest)
+    BOOST_AUTO_TEST_CASE(ClearSpecial)
     {
         Ruleset rs;
         rs.addItem('A', 50, {{5, 200}});
@@ -65,7 +65,7 @@ BOOST_AUTO_TEST_SUITE(RulesetTest)
         rs.addItem('A', 50, {{5, 200}});
         BOOST_CHECK_EQUAL(rs.getUnitPrice('A'), 50);
     }
-    BOOST_AUTO_TEST_CASE(RemoveRuleTest)
+    BOOST_AUTO_TEST_CASE(RemoveRule)
     {
         Ruleset rs;
         rs.addItem('A', 50, {{5, 200}});
@@ -73,20 +73,20 @@ BOOST_AUTO_TEST_SUITE(RulesetTest)
         BOOST_CHECK_THROW(rs.getUnitPrice('A'), std::out_of_range);
         // If this throws out of range, A must have been removed
     }
-    BOOST_AUTO_TEST_CASE(RemoveSpecialTest)
+    BOOST_AUTO_TEST_CASE(RemoveSpecial)
     {
         Ruleset rs;
         rs.addItem('A', 50, {{5, 200}});
         rs.removeSpecial('A', 0);
         BOOST_CHECK_EQUAL(rs.getSpecials('A').size(), 0);
     }
-    BOOST_AUTO_TEST_CASE(RemoveItemExceptionTest)
+    BOOST_AUTO_TEST_CASE(RemoveItemException)
     {
         Ruleset rs;
         rs.addItem('A', 50, {{5, 200}});
         BOOST_CHECK_THROW(rs.removeItem('B'), std::out_of_range);
     }
-    BOOST_AUTO_TEST_CASE(RemoveSpecialExceptionTest)
+    BOOST_AUTO_TEST_CASE(RemoveSpecialException)
     {
         Ruleset rs;
         rs.addItem('A', 50, {{5, 200}});

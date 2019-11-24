@@ -9,7 +9,15 @@ Checkout::Checkout(Ruleset rs, bool continuousCalculation) : Calculator(rs)
 int Checkout::getTotal()
 {
     if (!this->continuousCalculation)
-        this->total = this->calculateTotal();
+        try
+        {
+            this->total = this->calculateTotal();
+        }
+        catch (const StringEmpty&)
+        {
+            std::cout << "No items have been scanned." << std::endl;
+            return 0;
+        }
     // Only need to calculate the total if 
     // continuous calculation is false
     return this->total;

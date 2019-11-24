@@ -14,7 +14,7 @@
 
 BOOST_AUTO_TEST_SUITE(ParserTest)
 
-    BOOST_AUTO_TEST_CASE(TestOneCharParse)
+    BOOST_AUTO_TEST_CASE(OneCharParse)
 
     {
         std::vector<char> chars = {'A'};
@@ -26,7 +26,7 @@ BOOST_AUTO_TEST_SUITE(ParserTest)
         BOOST_CHECK_EQUAL(b['A'], 1);
     }
 
-    BOOST_AUTO_TEST_CASE(TestMultiCharParse)
+    BOOST_AUTO_TEST_CASE(MultiCharParse)
     {
         std::vector<char> chars = {'A', 'B'};
         std::string seq = "ABABABABABAB";
@@ -38,7 +38,7 @@ BOOST_AUTO_TEST_SUITE(ParserTest)
         BOOST_CHECK_EQUAL(b['B'], 6);
     }
 
-    BOOST_AUTO_TEST_CASE(TestNoCharsParse)
+    BOOST_AUTO_TEST_CASE(NoCharsParse)
     {
         std::vector<char> chars;
         std::string seq = "ABABABABABAB";
@@ -59,7 +59,7 @@ BOOST_AUTO_TEST_SUITE(ParserTest)
         BOOST_CHECK_THROW(p.parse(), StringEmpty);
     }
 
-    BOOST_AUTO_TEST_CASE(TestSetters)
+    BOOST_AUTO_TEST_CASE(Setters)
     {
         Parser p({}, "");
         p.setChars({'A', 'B'});
