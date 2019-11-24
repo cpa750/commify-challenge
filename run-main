@@ -1,3 +1,5 @@
+#!/bin/sh
+
 if [ ! -d cmake-main-build ]
 then
     mkdir cmake-main-build
@@ -9,4 +11,3 @@ make
 ./Checkout
 
 cd ..
-
