@@ -32,7 +32,6 @@ void Calculator::applySpecials()
         {
             int itemsOriginalPrice =
                     this->ruleset.getUnitPrice(i) * this->parseResults.at(i);
-            // Need to know item original price
             int specialPrice =
             (this->parseResults.at(i) / specials[0][0]) * specials[0][1] +
             (this->parseResults.at(i) % specials[0][0]) * this->ruleset.getUnitPrice(i);
