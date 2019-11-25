@@ -5,7 +5,7 @@ This is my solution to the Commify Code Challenge. It is implemented in C++ usin
 * [GCC/G++](https://gcc.gnu.org/)
 * [Boost C++ Libraries](https://www.boost.org/)
 * [CMake](https://cmake.org/) (minimum version 3.14.7)
-### Linux-Based OSes
+### Linux
 On Linux systems, all the prerequisites should be preinstalled. If not, many popular distributions include them in their official repositories.
 #### Running tests:
 ```
